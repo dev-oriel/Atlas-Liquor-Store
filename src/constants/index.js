@@ -31,24 +31,24 @@ export const statistics = [
 
 export const products = [
     {
-        imgURL: shoe4,
-        name: "Nike Air Jordan-01",
-        price: "$200.20",
+        imgURL: JD,
+        name: "Jack Daniel Original No. 7 1 Litre ",
+        price: "KShs 4,400",
     },
     {
-        imgURL: shoe5,
-        name: "Nike Air Jordan-10",
-        price: "$210.20",
+        imgURL: jameson,
+        name: "Jameson Irish Whiskey 1 Litre",
+        price: "KShs 3,500",
     },
     {
-        imgURL: shoe6,
-        name: "Nike Air Jordan-100",
-        price: "$220.20",
+        imgURL: red-label,
+        name: "JW Red Label 750ml",
+        price: "KShs 2,100",
     },
     {
-        imgURL: shoe7,
-        name: "Nike Air Jordan-001",
-        price: "$230.20",
+        imgURL: black-label,
+        name: "JW Black Label Whisky 1 Litre",
+        price: "KShs 4,000",
     },
 ];
 

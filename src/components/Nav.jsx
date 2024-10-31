@@ -26,7 +26,7 @@ const Nav = () => {
   }, []);
 
   return (
-    <header className="padding-x py-8 absolute z-10 w-full">
+    <header className="padding-x py-8 z-10 w-full">
       <nav className="flex justify-between items-center max-container">
         <a href="/">
           <img
@@ -71,7 +71,9 @@ const Nav = () => {
       {isMenuOpen && (
         <ul
           ref={menuRef}
-          className={`flex flex-col items-center justify-center bg-white shadow-lg p-4 absolute top-full left-0 right-0 z-20 max-lg:flex transition-all duration-300 ease-in-out ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+          className={`flex flex-col items-center justify-center bg-white shadow-lg p-4 absolute top-full left-0 right-0 z-20 max-lg:flex transition-all duration-300 ease-in-out ${
+            isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
         >
           {navLinks.map((item) => (
             <li key={item.label} className="py-2">

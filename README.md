@@ -1,3 +1,3 @@
-# Nike Website using React Vite and Tailwind CSS
+# Atlas Liquor Store Website using React Vite and Tailwind CSS
 
-This complete Nike website is to showcase my Styling capabilities usig Tailwind CSS
+This is a Complete Atlas Liquor store E-commerce Website using React Vite and Tailwind Css

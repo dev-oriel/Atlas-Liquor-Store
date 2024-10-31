@@ -1,5 +1,5 @@
 function Services() {
-  return <div>Services</div>;
+  return <div>Bento</div>;
 }
 
 export default Services;

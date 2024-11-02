@@ -8,8 +8,9 @@ const ProductDetail = () => {
   const productId = Number(id);
   const product = products.find((product) => product.id === productId);
 
-  // State for quantity
+  // State for quantity and selected related product
   const [quantity, setQuantity] = useState(1);
+  const [selectedRelatedProduct, setSelectedRelatedProduct] = useState(null);
 
   const handleIncrease = () => {
     setQuantity((prev) => prev + 1);
@@ -19,12 +20,15 @@ const ProductDetail = () => {
     setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
   };
 
-  if (!product) {
+  if (!product && !selectedRelatedProduct) {
     return <div className="p-4">Product not found</div>;
   }
 
+  // If a related product is selected, use that instead
+  const displayProduct = selectedRelatedProduct || product;
+
   // Calculate total price
-  const totalPrice = (product.price * quantity).toFixed(2);
+  const totalPrice = (displayProduct.price * quantity).toFixed(2);
 
   return (
     <div className="p-4 max-w-6xl mx-auto">
@@ -35,29 +39,41 @@ const ProductDetail = () => {
         {/* Product Image */}
         <div className="w-1/2">
           <img
-            src={product.imgURL}
-            alt={product.name}
+            src={displayProduct.imgURL}
+            alt={displayProduct.name}
             className="w-full h-full object-cover"
           />
         </div>
         {/* Product Details */}
         <div className="w-1/2 p-6 flex flex-col justify-between">
           <div>
-            <h2 className="text-3xl font-bold">{product.name}</h2>
+            <h2 className="text-3xl font-bold">{displayProduct.name}</h2>
             <p className="text-xl font-semibold text-coral-red">
               Ksh {totalPrice} {/* Display total price */}
             </p>
-            <p className="mt-2">{product.description}</p>
+            <p className="mt-2">{displayProduct.description}</p>
 
             {/* Additional product information */}
             <div className="mt-6">
               <h3 className="text-2xl font-semibold">Product Details</h3>
               <ul className="list-disc ml-6 mt-2 text-gray-700">
-                <li><strong>Country of Origin:</strong> {product.origin || "N/A"}</li>
-                <li><strong>Alcohol Content:</strong> {product.alcoholContent || "N/A"}%</li>
-                <li><strong>Brand:</strong> {product.brand || "N/A"}</li>
-                <li><strong>Type:</strong> {product.type || "N/A"}</li>
-                <li><strong>Stock Status:</strong> {product.inStock ? "In Stock" : "Out of Stock"}</li>
+                <li>
+                  <strong>Country of Origin:</strong> {displayProduct.origin || "N/A"}
+                </li>
+                <li>
+                  <strong>Alcohol Content:</strong>{" "}
+                  {displayProduct.alcoholContent || "N/A"}%
+                </li>
+                <li>
+                  <strong>Brand:</strong> {displayProduct.brand || "N/A"}
+                </li>
+                <li>
+                  <strong>Type:</strong> {displayProduct.type || "N/A"}
+                </li>
+                <li>
+                  <strong>Stock Status:</strong>{" "}
+                  {displayProduct.inStock ? "In Stock" : "Out of Stock"}
+                </li>
               </ul>
             </div>
           </div>
@@ -65,15 +81,15 @@ const ProductDetail = () => {
           {/* Quantity Control */}
           <div className="flex flex-col items-left mt-6">
             <div className="flex items-center mb-4">
-              <button 
-                onClick={handleDecrease} 
+              <button
+                onClick={handleDecrease}
                 className="bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300"
               >
                 -
               </button>
               <span className="mx-4 text-xl">{quantity}</span>
-              <button 
-                onClick={handleIncrease} 
+              <button
+                onClick={handleIncrease}
                 className="bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300"
               >
                 +
@@ -91,12 +107,20 @@ const ProductDetail = () => {
 
       {/* Additional Description */}
       <div className="mt-20 p-4 border-t border-gray-300">
-        <h3 className="text-2xl font-semibold text-center">About the Product</h3>
+        <h3 className="text-2xl font-semibold text-center">
+          About the Product
+        </h3>
         <p className="mt-2">
-          {product.name} is a Kenyan liquor classified as craft beer. It contains 6.5% ABV (alcohol by volume) and is known for its dark golden color and pleasant hoppy aroma of tropical fruits, grapefruit, and pine. It has a dry and distinct bitter finish, with heavy hops and hints of spice and tropical fruit.
+          {displayProduct.name} is a Kenyan liquor classified as craft beer. It
+          contains 6.5% ABV (alcohol by volume) and is known for its dark golden
+          color and pleasant hoppy aroma of tropical fruits, grapefruit, and
+          pine. It has a dry and distinct bitter finish, with heavy hops and
+          hints of spice and tropical fruit.
         </p>
         <p className="mt-2">
-          Bila Shaka is a classic IPA, produced by Bateleur Beer, an unfiltered craft beer made in Kenya. It’s a bottle-conditioned beer with no preservatives, no stabilizers, and no sugar added.
+          Bila Shaka is a classic IPA, produced by Bateleur Beer, an unfiltered
+          craft beer made in Kenya. It’s a bottle-conditioned beer with no
+          preservatives, no stabilizers, and no sugar added.
         </p>
         <p className="mt-2">
           <strong>Beer Style:</strong> IPA
@@ -108,7 +132,10 @@ const ProductDetail = () => {
       </div>
 
       {/* Related Products Section */}
-      <RelatedProducts currentProductId={productId} />
+      <RelatedProducts 
+        currentProductId={productId} 
+        setSelectedRelatedProduct={setSelectedRelatedProduct} // Pass the setter to RelatedProducts
+      />
     </div>
   );
 };

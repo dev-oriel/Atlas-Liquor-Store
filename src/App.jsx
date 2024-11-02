@@ -3,37 +3,37 @@ import {
   CustomerReviews,
   Footer,
   PopularProducts,
-  Services,
   SpecialOffer,
-  Subcribe,
-  SuperQuality,
+  ContactUs,
 } from "./sections";
 import Nav from "./components/Nav";
+import { Routes, Route } from "react-router-dom"; // Import Routes and Route here
+import ProductDetail from "./components/ProductDetail"; // Ensure you have a ProductDetail component
 
 const App = () => (
   <main className="relative">
     <Nav />
-    <section className="xl:padding-l wide:padding-r padding-b">
-      <Hero />
-    </section>
-    <section className="padding">
-      <PopularProducts />
-    </section>
-    <section className="padding">
-      <SuperQuality />
-    </section>
-    <section className="padding-x py-10">
-      <Services />
-    </section>
-    <section className="padding">
-      <SpecialOffer />
-    </section>
-    <section className="bg-pale-blue padding">
-      <CustomerReviews />
-    </section>
-    <section className="padding-x sm:py-32 py-16 w-full">
-      <Subcribe />
-    </section>
+
+    {/* Define Routes for different pages */}
+    <Routes>
+      {/* Home Route */}
+      <Route
+        path="/"
+        element={
+          <>
+            <Hero />
+            <PopularProducts />
+            <SpecialOffer />
+            <CustomerReviews />
+            <ContactUs />
+          </>
+        }
+      />
+      {/* Product Detail Route */}
+      <Route path="/product/:id" element={<ProductDetail />} />
+    </Routes>
+
+    {/* Footer is outside the Routes but will always render */}
     <section className="bg-black padding-x padding-t pb-8 text-white">
       <Footer />
     </section>

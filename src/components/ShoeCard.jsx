@@ -1,8 +1,14 @@
-const ShoeCard = ({ imgURL, changeBigShoeImage, bigShoeImg }) => {
+import { useNavigate } from "react-router-dom";
+
+const ShoeCard = ({ imgURL, changeBigShoeImage, bigShoeImg, productId }) => {
+  const navigate = useNavigate(); // Initialize the useNavigate hook
+
   const handleClick = () => {
     if (bigShoeImg !== imgURL.bigShoe) {
       changeBigShoeImage(imgURL.bigShoe);
     }
+    // Navigate to the ProductDetails page with the product ID
+    navigate(`/product/${productId}`);
   };
 
   return (

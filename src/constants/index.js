@@ -1,124 +1,261 @@
-import { facebook, instagram, shieldTick, support, truckFast, twitter } from "../assets/icons";
-import { bigShoe1, bigShoe2, bigShoe3, customer1, customer2, shoe4, shoe5, shoe6, shoe7, thumbnailShoe1, thumbnailShoe2, thumbnailShoe3 } from "../assets/images";
+import {
+  facebook,
+  instagram,
+  shieldTick,
+  support,
+  truckFast,
+  twitter,
+} from "../assets/icons";
+import {
+  bigShoe1,
+  bigShoe2,
+  bigShoe3,
+  customer1,
+  customer2,
+  JD,
+  jameson,
+  redLabel,
+  blackLabel,
+  thumbnailShoe1,
+  thumbnailShoe2,
+  thumbnailShoe3,
+} from "../assets/images";
 
 export const navLinks = [
-    { href: "#home", label: "Home" },
-    { href: "#about-us", label: "About Us" },
-    { href: "#products", label: "Products" },
-    { href: "#contact-us", label: "Contact Us" },
+  { href: "#home", label: "Home" },
+  { href: "#about-us", label: "About Us" },
+  { href: "#products", label: "Products" },
+  { href: "#contact-us", label: "Contact Us" },
 ];
 
 export const shoes = [
-    {
-        thumbnail: thumbnailShoe1,
-        bigShoe: bigShoe1,
-    },
-    {
-        thumbnail: thumbnailShoe2,
-        bigShoe: bigShoe2,
-    },
-    {
-        thumbnail: thumbnailShoe3,
-        bigShoe: bigShoe3,
-    },
+  { thumbnail: thumbnailShoe1, bigShoe: bigShoe1 },
+  { thumbnail: thumbnailShoe2, bigShoe: bigShoe2 },
+  { thumbnail: thumbnailShoe3, bigShoe: bigShoe3 },
 ];
 
 export const statistics = [
-    { value: '1k+', label: 'Brands' },
-    { value: '500+', label: 'Shops' },
-    { value: '250k+', label: 'Customers' },
+  { value: "1k+", label: "Brands" },
+  { value: "500+", label: "Shops" },
+  { value: "250k+", label: "Customers" },
 ];
 
 export const products = [
-    {
-        imgURL: JD,
-        name: "Jack Daniel Original No. 7 1 Litre ",
-        price: "KShs 4,400",
-    },
-    {
-        imgURL: jameson,
-        name: "Jameson Irish Whiskey 1 Litre",
-        price: "KShs 3,500",
-    },
-    {
-        imgURL: red-label,
-        name: "JW Red Label 750ml",
-        price: "KShs 2,100",
-    },
-    {
-        imgURL: black-label,
-        name: "JW Black Label Whisky 1 Litre",
-        price: "KShs 4,000",
-    },
+  {
+    id: 1,
+    imgURL: JD,
+    name: "Classic Whiskey Blend 1 Litre",
+    price: 4600,
+  },
+  {
+    id: 2,
+    imgURL: jameson,
+    name: "Smooth Irish Blend 1 Litre",
+    price: 3200,
+  },
+  {
+    id: 3,
+    imgURL: redLabel,
+    name: "Premium Red Whisky 750ml",
+    price: 2400,
+  },
+  {
+    id: 4,
+    imgURL: blackLabel,
+    name: "Elite Black Whisky 1 Litre",
+    price: 4500,
+  },
+  { id: 5, imgURL: JD, name: "Distilled Bourbon 1 Litre", price: 4600 },
+  {
+    id: 6,
+    imgURL: jameson,
+    name: "Signature Irish Whiskey 1 Litre",
+    price: 3200,
+  },
+  {
+    id: 7,
+    imgURL: redLabel,
+    name: "Classic Red Label 750ml",
+    price: 2400,
+  },
+  {
+    id: 8,
+    imgURL: blackLabel,
+    name: "Black Gold Whisky 1 Litre",
+    price: 4500,
+  },
+  {
+    id: 9,
+    imgURL: blackLabel,
+    name: "Rich Black Label 1 Litre",
+    price: 4500,
+  },
+  { id: 10, imgURL: JD, name: "Bourbon Legacy 1 Litre", price: 4600 },
+  {
+    id: 11,
+    imgURL: jameson,
+    name: "Celtic Spirit Whiskey 1 Litre",
+    price: 3200,
+  },
+  { id: 12, imgURL: redLabel, name: "Savory Red 750ml", price: 2400 },
+  {
+    id: 13,
+    imgURL: blackLabel,
+    name: "Black Premium Whisky 1 Litre",
+    price: 4500,
+  },
+  {
+    id: 14,
+    imgURL: blackLabel,
+    name: "Exclusive Black Whisky 1 Litre",
+    price: 4500,
+  },
+  { id: 15, imgURL: JD, name: "Timeless Bourbon 1 Litre", price: 4600 },
+  {
+    id: 16,
+    imgURL: jameson,
+    name: "Heritage Irish Whiskey 1 Litre",
+    price: 3200,
+  },
+  {
+    id: 17,
+    imgURL: redLabel,
+    name: "Heritage Red Label 750ml",
+    price: 2400,
+  },
+  {
+    id: 18,
+    imgURL: blackLabel,
+    name: "Classic Black Label 1 Litre",
+    price: 4500,
+  },
+  { id: 19, imgURL: redLabel, name: "Legacy Red 750ml", price: 2400 },
+  {
+    id: 20,
+    imgURL: blackLabel,
+    name: "Distinguished Black Whisky 1 Litre",
+    price: 4500,
+  },
+  {
+    id: 21,
+    imgURL: blackLabel,
+    name: "Elite Black Label 1 Litre",
+    price: 4500,
+  },
+  { id: 22, imgURL: JD, name: "Prestige Bourbon 1 Litre", price: 4600 },
+  {
+    id: 23,
+    imgURL: jameson,
+    name: "Irish Legacy Whiskey 1 Litre",
+    price: 3200,
+  },
+  {
+    id: 24,
+    imgURL: redLabel,
+    name: "Classic Red Blend 750ml",
+    price: 2400,
+  },
+  {
+    id: 25,
+    imgURL: blackLabel,
+    name: "Ultimate Black Label Whisky 1 Litre",
+    price: 4500,
+  },
 ];
 
-export const services = [
-    {
-        imgURL: truckFast,
-        label: "Free shipping",
-        subtext: "Enjoy seamless shopping with our complimentary shipping service."
-    },
-    {
-        imgURL: shieldTick,
-        label: "Secure Payment",
-        subtext: "Experience worry-free transactions with our secure payment options."
-    },
-    {
-        imgURL: support,
-        label: "Love to help you",
-        subtext: "Our dedicated team is here to assist you every step of the way."
-    },
-];
 
 export const reviews = [
-    {
-        imgURL: customer1,
-        customerName: 'Morich Brown',
-        rating: 4.5,
-        feedback: "The attention to detail and the quality of the product exceeded my expectations. Highly recommended!"
-    },
-    {
-        imgURL: customer2,
-        customerName: 'Lota Mongeskar',
-        rating: 4.5,
-        feedback: "The product not only met but exceeded my expectations. I'll definitely be a returning customer!"
-    }
+  {
+    imgURL: customer1,
+    customerName: "Morich Brown",
+    rating: 4.5,
+    feedback:
+      "The attention to detail and the quality of the product exceeded my expectations. Highly recommended!",
+  },
+  {
+    imgURL: customer2,
+    customerName: "Lota Mongeskar",
+    rating: 4.5,
+    feedback:
+      "The product not only met but exceeded my expectations. I'll definitely be a returning customer!",
+  },
+  {
+    imgURL: customer1,
+    customerName: "Oriel Brown",
+    rating: 4.5,
+    feedback:
+      "The attention to detail and the quality of the product exceeded my expectations. Highly recommended!",
+  },
+  {
+    imgURL: customer2,
+    customerName: "Walter Mongera",
+    rating: 4.5,
+    feedback:
+      "The product not only met but exceeded my expectations. I'll definitely be a returning customer!",
+  },
+  {
+    imgURL: customer1,
+    customerName: "Wee wacha bana",
+    rating: 4.5,
+    feedback:
+      "The attention to detail and the quality of the product exceeded my expectations. Highly recommended!",
+  },
+  {
+    imgURL: customer2,
+    customerName: "yoow bettr",
+    rating: 4.5,
+    feedback:
+      "The product not only met but exceeded my expectations. I'll definitely be a returning customer!",
+  },
+  {
+    imgURL: customer1,
+    customerName: "Test !",
+    rating: 4.5,
+    feedback:
+      "The attention to detail and the quality of the product exceeded my expectations. Highly recommended!",
+  },
+  {
+    imgURL: customer2,
+    customerName: "User 1",
+    rating: 4.5,
+    feedback:
+      "The product not only met but exceeded my expectations. I'll definitely be a returning customer!",
+  },
 ];
 
-
 export const footerLinks = [
-    {
-        title: "Products",
-        links: [
-            { name: "Air Force 1", link: "/" },
-            { name: "Air Max 1", link: "/" },
-            { name: "Air Jordan 1", link: "/" },
-            { name: "Air Force 2", link: "/" },
-            { name: "Nike Waffle Racer", link: "/" },
-            { name: "Nike Cortez", link: "/" },
-        ],
-    },
-    {
-        title: "Help",
-        links: [
-            { name: "About us", link: "/" },
-            { name: "FAQs", link: "/" },
-            { name: "How it works", link: "/" },
-            { name: "Privacy policy", link: "/" },
-            { name: "Payment policy", link: "/" },
-        ],
-    },
-    {
-        title: "Get in touch",
-        links: [
-            { name: "customer@nike.com", link: "mailto:customer@nike.com" },
-            { name: "+92554862354", link: "tel:+92554862354" },
-        ],
-    },
+  {
+    title: "Products",
+    links: [
+      { name: "Air Force 1", link: "/" },
+      { name: "Air Max 1", link: "/" },
+      { name: "Air Jordan 1", link: "/" },
+      { name: "Air Force 2", link: "/" },
+      { name: "Nike Waffle Racer", link: "/" },
+      { name: "Nike Cortez", link: "/" },
+    ],
+  },
+  {
+    title: "Help",
+    links: [
+      { name: "About us", link: "/" },
+      { name: "FAQs", link: "/" },
+      { name: "How it works", link: "/" },
+      { name: "Privacy policy", link: "/" },
+      { name: "Payment policy", link: "/" },
+    ],
+  },
+  {
+    title: "Get in touch",
+    links: [
+      { name: "customer@nike.com", link: "mailto:customer@nike.com" },
+      { name: "+92554862354", link: "tel:+92554862354" },
+    ],
+  },
 ];
 
 export const socialMedia = [
-    { src: facebook, alt: "facebook logo" },
-    { src: twitter, alt: "twitter logo" },
-    { src: instagram, alt: "instagram logo" },
+  { src: facebook, alt: "facebook logo" },
+  { src: twitter, alt: "twitter logo" },
+  { src: instagram, alt: "instagram logo" },
 ];

@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Palanquin:wght@100;200;300;400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Palanquin:wght@100;200;300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -24,7 +23,7 @@
 }
 
 @layer utilities {
-  .padding {
+  .padding-all {
     @apply sm:px-16 px-8 sm:py-24 py-12;
   }
 
@@ -54,5 +53,59 @@
 
   .info-text {
     @apply font-montserrat text-slate-gray text-lg leading-7;
+  }
+}
+
+/* Keyframes for the slide-in animation */
+@keyframes slide-in {
+  0% {
+    transform: translateX(100%); /* Start off-screen to the right */
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Keyframes for the slide-out animation */
+@keyframes slide-out {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%); /* Move the box to the left */
+    opacity: 0;
+  }
+}
+
+/* Classes for animations */
+.animate-slide-in {
+  animation: slide-in 0.5s ease-out forwards;
+}
+
+.animate-slide-out {
+  animation: slide-out 0.5s ease-out forwards;
+}
+
+.review-box {
+  background-color: #f8f8f8; /* Light background color */
+  border-radius: 10px;      /* Rounded corners */
+  padding: 20px;            /* Padding inside the box */
+  margin: 10px;             /* Margin between boxes */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  transition: transform 0.5s ease; /* Smooth transition for movement */
+  min-height: 120px;        /* Ensure a minimum height for reviews */
+  display: flex;            /* Flexbox for inner content */
+  flex-direction: column;   /* Stack elements vertically */
+  justify-content: space-between; /* Space out the contents */
+}
+
+/* Add a media query for the review-box if needed */
+@media (max-width: 768px) {
+  .review-box {
+    padding: 15px; /* Adjust padding for smaller screens */
+    min-height: 100px; /* Adjust minimum height for smaller screens */
   }
 }

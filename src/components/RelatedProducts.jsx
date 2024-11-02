@@ -1,9 +1,22 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { products } from "../constants";
+import { useNavigate } from "react-router-dom";
 
-const RelatedProducts = ({ currentProductId, setSelectedRelatedProduct }) => {
-  const relatedProducts = products.filter((product) => product.id !== currentProductId); // Exclude the current product
+const RelatedProducts = ({ currentProductId, selectedRelatedProduct, setSelectedRelatedProduct }) => {
+  const initialRelatedProducts = products.filter((product) => product.id !== currentProductId);
+  const [relatedProducts, setRelatedProducts] = useState(initialRelatedProducts);
   const scrollRef = useRef();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (selectedRelatedProduct) {
+      // Update related products by removing the selected product
+      setRelatedProducts((prev) => prev.filter((product) => product.id !== selectedRelatedProduct.id));
+      // Navigate to the selected product detail view
+      navigate(`/product/${selectedRelatedProduct.id}`); // Adjust the path based on your routing
+      setSelectedRelatedProduct(null); // Reset selected related product
+    }
+  }, [selectedRelatedProduct, navigate, setSelectedRelatedProduct]);
 
   const scroll = (direction) => {
     if (scrollRef.current) {
@@ -34,7 +47,7 @@ const RelatedProducts = ({ currentProductId, setSelectedRelatedProduct }) => {
             <div 
               key={product.id} 
               onClick={() => setSelectedRelatedProduct(product)} // Set clicked product as selected
-              className="w-56 h-72 bg-white rounded-lg shadow-md p-4 flex-shrink-0 flex flex-col justify-between cursor-pointer"
+              className="w-56 h-72 bg-white rounded-lg shadow-md p-4 flex-shrink-0 flex flex-col justify-between cursor-pointer transition-transform transform hover:scale-105"
             >
               <img 
                 src={product.imgURL} 

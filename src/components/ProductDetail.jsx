@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { products } from "../constants";
-import RelatedProducts from "./RelatedProducts"; // Import the RelatedProducts component
+import RelatedProducts from "./RelatedProducts";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -20,15 +20,12 @@ const ProductDetail = () => {
     setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
   };
 
-  if (!product && !selectedRelatedProduct) {
+  if (!product) {
     return <div className="p-4">Product not found</div>;
   }
 
-  // If a related product is selected, use that instead
-  const displayProduct = selectedRelatedProduct || product;
-
   // Calculate total price
-  const totalPrice = (displayProduct.price * quantity).toFixed(2);
+  const totalPrice = (product.price * quantity).toFixed(2);
 
   return (
     <div className="p-4 max-w-6xl mx-auto">
@@ -39,40 +36,40 @@ const ProductDetail = () => {
         {/* Product Image */}
         <div className="w-1/2">
           <img
-            src={displayProduct.imgURL}
-            alt={displayProduct.name}
-            className="w-full h-full object-cover"
+            src={product.imgURL}
+            alt={product.name}
+            className="w-full h-full object-cover transition-transform duration-300" // Smooth transition for image
           />
         </div>
         {/* Product Details */}
         <div className="w-1/2 p-6 flex flex-col justify-between">
           <div>
-            <h2 className="text-3xl font-bold">{displayProduct.name}</h2>
+            <h2 className="text-3xl font-bold">{product.name}</h2>
             <p className="text-xl font-semibold text-coral-red">
               Ksh {totalPrice} {/* Display total price */}
             </p>
-            <p className="mt-2">{displayProduct.description}</p>
+            <p className="mt-2">{product.description}</p>
 
             {/* Additional product information */}
             <div className="mt-6">
               <h3 className="text-2xl font-semibold">Product Details</h3>
               <ul className="list-disc ml-6 mt-2 text-gray-700">
                 <li>
-                  <strong>Country of Origin:</strong> {displayProduct.origin || "N/A"}
+                  <strong>Country of Origin:</strong> {product.origin || "N/A"}
                 </li>
                 <li>
                   <strong>Alcohol Content:</strong>{" "}
-                  {displayProduct.alcoholContent || "N/A"}%
+                  {product.alcoholContent || "N/A"}%
                 </li>
                 <li>
-                  <strong>Brand:</strong> {displayProduct.brand || "N/A"}
+                  <strong>Brand:</strong> {product.brand || "N/A"}
                 </li>
                 <li>
-                  <strong>Type:</strong> {displayProduct.type || "N/A"}
+                  <strong>Type:</strong> {product.type || "N/A"}
                 </li>
                 <li>
                   <strong>Stock Status:</strong>{" "}
-                  {displayProduct.inStock ? "In Stock" : "Out of Stock"}
+                  {product.inStock ? "In Stock" : "Out of Stock"}
                 </li>
               </ul>
             </div>
@@ -111,7 +108,7 @@ const ProductDetail = () => {
           About the Product
         </h3>
         <p className="mt-2">
-          {displayProduct.name} is a Kenyan liquor classified as craft beer. It
+          {product.name} is a Kenyan liquor classified as craft beer. It
           contains 6.5% ABV (alcohol by volume) and is known for its dark golden
           color and pleasant hoppy aroma of tropical fruits, grapefruit, and
           pine. It has a dry and distinct bitter finish, with heavy hops and
@@ -134,7 +131,8 @@ const ProductDetail = () => {
       {/* Related Products Section */}
       <RelatedProducts 
         currentProductId={productId} 
-        setSelectedRelatedProduct={setSelectedRelatedProduct} // Pass the setter to RelatedProducts
+        selectedRelatedProduct={selectedRelatedProduct} 
+        setSelectedRelatedProduct={setSelectedRelatedProduct} 
       />
     </div>
   );

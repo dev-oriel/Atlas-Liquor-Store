@@ -34,7 +34,6 @@ export const shoes = [
   { id: 3, thumbnail: thumbnailShoe3, bigShoe: bigShoe3 },
 ];
 
-
 export const statistics = [
   { value: "300+", label: "Brands" },
   { value: "20k+", label: "Engagements" },
@@ -258,4 +257,54 @@ export const socialMedia = [
   { src: facebook, alt: "facebook logo" },
   { src: twitter, alt: "twitter logo" },
   { src: instagram, alt: "instagram logo" },
+];
+export const recommendedProducts = [
+  {
+    id: 1,
+    name: "Chips & Dips",
+    price: 150,
+    imgURL: JD,
+  },
+  {
+    id: 2,
+    name: "Cheese Platter",
+    price: 500,
+    imgURL: redLabel,
+  },
+  {
+    id: 3,
+    name: "Cocktail Shaker Set",
+    price: 1200,
+    imgURL: jameson,
+  },
+  {
+    id: 4,
+    name: "Wine Glass Set",
+    price: 800,
+    imgURL: blackLabel,
+  },
+  {
+    id: 5,
+    name: "Barbecue Grill",
+    price: 3000,
+    imgURL: JD,
+  },
+  {
+    id: 6,
+    name: "Ice Bucket",
+    price: 600,
+    imgURL: redLabel,
+  },
+  {
+    id: 7,
+    name: "Mixed Nuts",
+    price: 350,
+    imgURL: jameson,
+  },
+  {
+    id: 8,
+    name: "Soft Drinks",
+    price: 100,
+    imgURL: blackLabel,
+  },
 ];

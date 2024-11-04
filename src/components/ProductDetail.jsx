@@ -2,11 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { products } from "../constants";
 import RelatedProducts from "./RelatedProducts";
+import { useCart } from "../CartContext"; // Import the useCart hook
 
 const ProductDetail = () => {
   const { id } = useParams();
   const productId = Number(id);
   const product = products.find((product) => product.id === productId);
+
+  // Use the Cart context
+  const { addToCart } = useCart();
 
   // State for quantity and selected related product
   const [quantity, setQuantity] = useState(1);
@@ -23,7 +27,7 @@ const ProductDetail = () => {
   // Scroll to top when the component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [id]); 
+  }, [id]);
 
   if (!product) {
     return <div className="p-4">Product not found</div>;
@@ -42,6 +46,12 @@ const ProductDetail = () => {
 
     // Open the WhatsApp URL in a new window
     window.open(whatsappURL, "_blank");
+  };
+
+  // Function to handle Add to Cart button click
+  const handleAddToCart = () => {
+    console.log("Product added to cart");
+    addToCart(product); // Add the product to the cart
   };
 
   return (
@@ -109,7 +119,10 @@ const ProductDetail = () => {
                 +
               </button>
             </div>
-            <button className="bg-coral-red mb-6 text-white px-4 py-2 rounded hover:bg-red-600">
+            <button
+              onClick={handleAddToCart}
+              className="bg-coral-red mb-6 text-white px-4 py-2 rounded hover:bg-red-600"
+            >
               Add to Cart
             </button>
             <button

@@ -23,7 +23,9 @@ const Hero = () => {
             Discover our Products
           </span>
           <br />
-          <span className="text-coral-red inline-block mt-2 sm:mt-3">Best </span>
+          <span className="text-coral-red inline-block mt-2 sm:mt-3">
+            Best{" "}
+          </span>
           <span> in Town</span>
         </h1>
         <p className="font-montserrat text-gray-600 text-base sm:text-lg leading-7 sm:leading-8 mt-4 sm:mt-6 mb-8 sm:mb-14 max-w-xs sm:max-w-sm">
@@ -33,7 +35,9 @@ const Hero = () => {
         <div className="flex justify-start items-start flex-wrap w-full mt-12 sm:mt-20 gap-8 sm:gap-16">
           {statistics.map((stat) => (
             <div key={stat.label} className="text-center sm:text-left">
-              <p className="text-3xl sm:text-4xl font-palanquin font-bold">{stat.value}</p>
+              <p className="text-3xl sm:text-4xl font-palanquin font-bold">
+                {stat.value}
+              </p>
               <p className="text-base sm:text-lg leading-6 sm:leading-7 font-montserrat text-gray-600">
                 {stat.label}
               </p>

@@ -27,6 +27,18 @@ const ProductDetail = () => {
   // Calculate total price
   const totalPrice = (product.price * quantity).toFixed(2);
 
+  // Function to handle "Order via WhatsApp" button click
+  const handleOrderViaWhatsApp = () => {
+    const message = `Hello, I would like to order:\n\n Product: ${product.name}\n Quantity: ${quantity}\nTotal Price: Ksh ${totalPrice}\n\nPlease confirm availability.`;
+    const phoneNumber = "254758997669";
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+
+    // Open the WhatsApp URL in a new window
+    window.open(whatsappURL, "_blank");
+  };
+
   return (
     <div className="p-4 max-w-6xl mx-auto">
       <Link to="/" className="text-blue-500 underline mb-4">
@@ -38,7 +50,7 @@ const ProductDetail = () => {
           <img
             src={product.imgURL}
             alt={product.name}
-            className="w-full h-full object-cover transition-transform duration-300" // Smooth transition for image
+            className="w-full h-full object-cover transition-transform duration-300"
           />
         </div>
         {/* Product Details */}
@@ -46,7 +58,7 @@ const ProductDetail = () => {
           <div>
             <h2 className="text-3xl font-bold">{product.name}</h2>
             <p className="text-xl font-semibold text-coral-red">
-              Ksh {totalPrice} {/* Display total price */}
+              Ksh {totalPrice}
             </p>
             <p className="mt-2">{product.description}</p>
 
@@ -95,7 +107,10 @@ const ProductDetail = () => {
             <button className="bg-coral-red mb-6 text-white px-4 py-2 rounded hover:bg-red-600">
               Add to Cart
             </button>
-            <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-500">
+            <button
+              onClick={handleOrderViaWhatsApp}
+              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-500"
+            >
               Order via WhatsApp
             </button>
           </div>
@@ -129,10 +144,10 @@ const ProductDetail = () => {
       </div>
 
       {/* Related Products Section */}
-      <RelatedProducts 
-        currentProductId={productId} 
-        selectedRelatedProduct={selectedRelatedProduct} 
-        setSelectedRelatedProduct={setSelectedRelatedProduct} 
+      <RelatedProducts
+        currentProductId={productId}
+        selectedRelatedProduct={selectedRelatedProduct}
+        setSelectedRelatedProduct={setSelectedRelatedProduct}
       />
     </div>
   );

@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from "react";
-import { headerLogo } from "../assets/images";
-import { hamburger } from "../assets/icons";
+import { hamburger } from "../assets/icons"; // Ensure this path is correct
 import { navLinks } from "../constants";
 import atlasLiquorLogo from "../assets/icons/atlas-liquor-logo.svg";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -25,68 +25,136 @@ const Nav = () => {
     };
   }, []);
 
+  const handleSearch = (event) => {
+    event.preventDefault();
+    console.log("Searching for:", searchQuery);
+    // Implement your search logic here
+  };
+
   return (
-    <header className="padding-x py-8 z-10 w-full">
-      <nav className="flex justify-between items-center max-container">
+    <header className="fixed top-0 left-0 w-full z-20 bg-white shadow-md">
+      <nav className="flex justify-between items-center max-w-screen-xl mx-auto px-4 py-4">
         <a href="/">
           <img
             src={atlasLiquorLogo}
             alt="Atlas Liquor Logo"
-            className="w-44 h-auto m-0"
+            className="w-32 h-auto"
           />
         </a>
-        {/* Desktop Navigation */}
-        <ul className="flex-1 flex justify-center items-center gap-16 max-lg:hidden">
-          {navLinks.map((item) => (
-            <li key={item.label}>
-              <a
-                href={item.href}
-                className="font-montserrat leading-normal text-lg text-slate-gray"
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-        {/* Sign In/Sign Up Links */}
-        <div className="flex gap-2 text-lg leading-normal font-medium font-montserrat max-lg:hidden wide:mr-24">
-          <a href="/">Sign in</a>
-          <span>/</span>
-          <a href="/">Sign up</a>
-        </div>
-        {/* Hamburger Icon for Mobile */}
-        <div className="flex-row hidden max-lg:block">
-          <img
-            src={hamburger}
-            alt="hamburger icon"
-            width={25}
-            height={25}
-            onClick={toggleMenu}
-            className="cursor-pointer"
-            aria-expanded={isMenuOpen}
-          />
+        <div className="flex items-center flex-1 justify-between md:justify-end">
+          {/* Search Bar for Mobile */}
+          <form onSubmit={handleSearch} className="flex md:hidden mx-4">
+            <input
+              type="text"
+              placeholder="Search products..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="border border-gray-300 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-coral-red transition duration-200 w-48"
+            />
+            <button
+              type="submit"
+              className="ml-2 px-3 py-1 bg-coral-red text-white rounded-lg hover:bg-coral-dark transition duration-200"
+            >
+              Search
+            </button>
+          </form>
+
+          {/* Desktop Navigation */}
+          <ul className="hidden md:flex flex-1 justify-center items-center gap-10">
+            {navLinks.map((item) => (
+              <li key={item.label}>
+                <a
+                  href={item.href}
+                  className="font-montserrat text-lg text-slate-700 hover:text-coral-red transition duration-200"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {/* Search Bar for Desktop */}
+          <form onSubmit={handleSearch} className="hidden md:flex items-center">
+            <input
+              type="text"
+              placeholder="Search products..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-coral-red transition duration-200"
+            />
+            <button
+              type="submit"
+              className="ml-2 px-4 py-2 bg-coral-red text-white rounded-lg hover:bg-coral-dark transition duration-200"
+            >
+              Search
+            </button>
+          </form>
+
+          {/* Sign In/Sign Up Links */}
+          <div className="hidden md:flex gap-4 text-lg font-medium">
+            <a href="/" className="text-slate-700 hover:text-coral-red transition duration-200">
+              Sign in
+            </a>
+            <span>/</span>
+            <a href="/" className="text-slate-700 hover:text-coral-red transition duration-200">
+              Sign up
+            </a>
+          </div>
+
+          {/* Hamburger Icon for Mobile */}
+          <div className="flex md:hidden">
+            <img
+              src={hamburger}
+              alt="Hamburger icon"
+              width={25}
+              height={25}
+              onClick={toggleMenu}
+              className="cursor-pointer"
+              aria-expanded={isMenuOpen}
+            />
+          </div>
         </div>
       </nav>
+
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <ul
+        <div
           ref={menuRef}
-          className={`flex flex-col items-center justify-center bg-white shadow-lg p-4 absolute top-full left-0 right-0 z-20 max-lg:flex transition-all duration-300 ease-in-out ${
-            isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          className={`fixed top-16 right-0 w-64 bg-white shadow-lg transition-transform duration-300 ease-in-out transform ${
+            isMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          {navLinks.map((item) => (
-            <li key={item.label} className="py-2">
-              <a
-                href={item.href}
-                className="font-montserrat leading-normal text-lg text-slate-gray"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+          <ul className="flex flex-col items-start p-4">
+            {navLinks.map((item) => (
+              <li key={item.label} className="py-2 w-full text-left">
+                <a
+                  href={item.href}
+                  className="font-montserrat text-lg text-slate-700 hover:text-coral-red transition duration-200"
+                  onClick={() => setIsMenuOpen(false)} // Close the menu on item click
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div className="flex flex-col items-start p-4 border-t border-gray-200">
+            <a
+              href="/"
+              className="text-lg text-slate-700 hover:text-coral-red transition duration-200"
+              onClick={() => setIsMenuOpen(false)} // Close the menu on item click
+            >
+              Sign in
+            </a>
+            <span>/</span>
+            <a
+              href="/"
+              className="text-lg text-slate-700 hover:text-coral-red transition duration-200"
+              onClick={() => setIsMenuOpen(false)} // Close the menu on item click
+            >
+              Sign up
+            </a>
+          </div>
+        </div>
       )}
     </header>
   );

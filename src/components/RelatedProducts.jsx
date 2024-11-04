@@ -52,7 +52,7 @@ const RelatedProducts = ({ currentProductId, selectedRelatedProduct, setSelected
               <img 
                 src={product.imgURL} 
                 alt={product.name} 
-                className="h-32 w-full object-cover rounded mb-2"
+                className="h-full w-32 object-cover rounded mb-2"
               />
               <div className="flex-1">
                 <h4 className="text-lg font-medium text-gray-800 truncate">{product.name}</h4>

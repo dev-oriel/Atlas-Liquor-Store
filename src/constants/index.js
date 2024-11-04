@@ -29,15 +29,16 @@ export const navLinks = [
 ];
 
 export const shoes = [
-  { thumbnail: thumbnailShoe1, bigShoe: bigShoe1 },
-  { thumbnail: thumbnailShoe2, bigShoe: bigShoe2 },
-  { thumbnail: thumbnailShoe3, bigShoe: bigShoe3 },
+  { id: 1, thumbnail: thumbnailShoe1, bigShoe: bigShoe1 },
+  { id: 2, thumbnail: thumbnailShoe2, bigShoe: bigShoe2 },
+  { id: 3, thumbnail: thumbnailShoe3, bigShoe: bigShoe3 },
 ];
 
+
 export const statistics = [
-  { value: "1k+", label: "Brands" },
-  { value: "500+", label: "Shops" },
-  { value: "250k+", label: "Customers" },
+  { value: "300+", label: "Brands" },
+  { value: "20k+", label: "Engagements" },
+  { value: "2k+", label: "Customers" },
 ];
 
 export const products = [
@@ -162,7 +163,6 @@ export const products = [
     price: 4500,
   },
 ];
-
 
 export const reviews = [
   {

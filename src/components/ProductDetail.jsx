@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { products } from "../constants";
 import RelatedProducts from "./RelatedProducts";
@@ -20,6 +20,11 @@ const ProductDetail = () => {
     setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
   };
 
+  // Scroll to top when the component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]); 
+
   if (!product) {
     return <div className="p-4">Product not found</div>;
   }
@@ -40,13 +45,13 @@ const ProductDetail = () => {
   };
 
   return (
-    <div className="p-4 max-w-6xl mx-auto">
+    <div className="p-4 pt-40 max-w-6xl mx-auto ">
       <Link to="/" className="text-blue-500 underline mb-4">
         Back to Products
       </Link>
-      <div className="flex bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="flex flex-col md:flex-row bg-white rounded-lg shadow-lg overflow-hidden">
         {/* Product Image */}
-        <div className="w-1/2">
+        <div className="md:w-1/2">
           <img
             src={product.imgURL}
             alt={product.name}
@@ -54,7 +59,7 @@ const ProductDetail = () => {
           />
         </div>
         {/* Product Details */}
-        <div className="w-1/2 p-6 flex flex-col justify-between">
+        <div className="md:w-1/2 p-6 flex flex-col justify-between">
           <div>
             <h2 className="text-3xl font-bold">{product.name}</h2>
             <p className="text-xl font-semibold text-coral-red">

@@ -28,11 +28,13 @@ function Footer() {
                 View on Google Maps
               </a>
               <p className="mt-1">
-                Phone: <span className="text-coral-400">0700 044 108</span>
+                Phone: <span className="text-coral-400">0758 997 669</span>
               </p>
               <p>
                 Email:{" "}
-                <span className="text-coral-400">info@liquorshack.co.ke</span>
+                <span className="text-coral-400">
+                  blackmarksolutions@gmail.com
+                </span>
               </p>
               <p>Business Hours: Mon – Sun, 10:00am – 20:00pm</p>
               <p>Around Gigiri? Order via Uber Eats or Bolt Food</p>
@@ -88,8 +90,19 @@ function Footer() {
           {/* Product Categories Section */}
           <div className="bg-gray-800 p-6 rounded-lg shadow-md">
             <h3 className="font-semibold text-xl mb-4">Product Categories</h3>
-            {['Gin', 'Non-Alcoholic Drinks', 'Rum', 'Tequila', 'Vodka', 'Whiskies', 'Wines'].map((category) => (
-              <p key={category} className="hover:text-coral-red cursor-pointer transition duration-300">
+            {[
+              "Gin",
+              "Non-Alcoholic Drinks",
+              "Rum",
+              "Tequila",
+              "Vodka",
+              "Whiskies",
+              "Wines",
+            ].map((category) => (
+              <p
+                key={category}
+                className="hover:text-coral-red cursor-pointer transition duration-300"
+              >
                 {category}
               </p>
             ))}

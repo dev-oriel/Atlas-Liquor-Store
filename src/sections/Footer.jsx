@@ -88,27 +88,11 @@ function Footer() {
           {/* Product Categories Section */}
           <div className="bg-gray-800 p-6 rounded-lg shadow-md">
             <h3 className="font-semibold text-xl mb-4">Product Categories</h3>
-            <p className="hover:text-coral-red cursor-pointer transition duration-300">
-              Gin
-            </p>
-            <p className="hover:text-coral-red cursor-pointer transition duration-300">
-              Non-Alcoholic Drinks
-            </p>
-            <p className="hover:text-coral-red cursor-pointer transition duration-300">
-              Rum
-            </p>
-            <p className="hover:text-coral-red cursor-pointer transition duration-300">
-              Tequila
-            </p>
-            <p className="hover:text-coral-red cursor-pointer transition duration-300">
-              Vodka
-            </p>
-            <p className="hover:text-coral-red cursor-pointer transition duration-300">
-              Whiskies
-            </p>
-            <p className="hover:text-coral-red cursor-pointer transition duration-300">
-              Wines
-            </p>
+            {['Gin', 'Non-Alcoholic Drinks', 'Rum', 'Tequila', 'Vodka', 'Whiskies', 'Wines'].map((category) => (
+              <p key={category} className="hover:text-coral-red cursor-pointer transition duration-300">
+                {category}
+              </p>
+            ))}
           </div>
         </div>
       </div>

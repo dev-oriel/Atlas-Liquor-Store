@@ -2,7 +2,7 @@ import React from "react";
 
 const ContactUs = () => {
   return (
-    <div className="flex justify-center items-center  min-h-[70vh] bg-gray-100">
+    <div className="flex justify-center items-center md:h-screen mt-10 mb-20 bg-gray-100 p-4 ">
       <div className="bg-white shadow-lg rounded-lg p-6 max-w-3xl w-full">
         <h3 className="text-2xl font-semibold text-center mb-4">
           ABOUT OUR BRANDS OF LIQUOR
@@ -15,7 +15,7 @@ const ContactUs = () => {
           Find Us at the Pop Up Market, 1st Floor, Westgate Mall, Westlands,
           Nairobi. We also do deliveries, Give Us a call on 0712 345 678
         </p>
-        <div className="flex justify-center space-x-4">
+        <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
           <button className="bg-coral-red text-white py-2 px-6 rounded-lg transition duration-300 hover:bg-coral-600">
             Explore
           </button>

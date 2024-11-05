@@ -27,7 +27,9 @@ const CustomerReviews = () => {
   ];
 
   return (
-    <div className="overflow-hidden p-6 bg-gray-100"> {/* Added padding and background color */}
+    <div className=" overflow-hidden p-6 bg-gray-100">
+      {" "}
+      {/* Added padding and background color */}
       <h2 className="text-center text-xl font-bold mb-4">Customer Reviews</h2>
       <div
         className={`flex flex-col md:flex-row transition-transform duration-500 ${
@@ -35,8 +37,8 @@ const CustomerReviews = () => {
         }`}
       >
         {currentReviews.map((review, index) => (
-          <div 
-            key={index} 
+          <div
+            key={index}
             className="review-box flex-1 p-4 md:min-h-48 md:h-48 flex flex-col justify-between" // Set min-h and fixed height
           >
             <img
@@ -45,7 +47,10 @@ const CustomerReviews = () => {
               className="w-16 h-16 rounded-full mb-2"
             />
             <h3 className="font-bold">{review.customerName}</h3>
-            <p className="text-sm flex-1 overflow-hidden">{review.feedback}</p> {/* Added flex-1 for text area */}
+            <p className="text-sm flex-1 overflow-hidden">
+              {review.feedback}
+            </p>{" "}
+            {/* Added flex-1 for text area */}
             <p className="text-yellow-500">
               {"★".repeat(Math.floor(review.rating))}
               {"☆".repeat(5 - Math.floor(review.rating))}

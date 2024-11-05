@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { products } from "../constants";
 import RelatedProducts from "./RelatedProducts";
+import { useCart } from "../CartContext"; // Import the useCart hook
 
 const ProductDetail = () => {
   const { id } = useParams();
   const productId = Number(id);
   const product = products.find((product) => product.id === productId);
+
+  // Use the Cart context
+  const { addToCart } = useCart();
 
   // State for quantity and selected related product
   const [quantity, setQuantity] = useState(1);
@@ -20,6 +24,11 @@ const ProductDetail = () => {
     setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
   };
 
+  // Scroll to top when the component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+
   if (!product) {
     return <div className="p-4">Product not found</div>;
   }
@@ -27,26 +36,44 @@ const ProductDetail = () => {
   // Calculate total price
   const totalPrice = (product.price * quantity).toFixed(2);
 
+  // Function to handle "Order via WhatsApp" button click
+  const handleOrderViaWhatsApp = () => {
+    const message = `Hello, I would like to order:\n\n Product: ${product.name}\n Quantity: ${quantity}\nTotal Price: Ksh ${totalPrice}\n\nPlease confirm availability.`;
+    const phoneNumber = "254758997669";
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+
+    // Open the WhatsApp URL in a new window
+    window.open(whatsappURL, "_blank");
+  };
+
+  // Function to handle Add to Cart button click
+  const handleAddToCart = () => {
+    console.log("Product added to cart");
+    addToCart(product); // Add the product to the cart
+  };
+
   return (
-    <div className="p-4 max-w-6xl mx-auto">
+    <div className="p-4 pt-40 max-w-6xl mx-auto ">
       <Link to="/" className="text-blue-500 underline mb-4">
         Back to Products
       </Link>
-      <div className="flex bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="flex flex-col md:flex-row bg-white rounded-lg shadow-lg overflow-hidden">
         {/* Product Image */}
-        <div className="w-1/2">
+        <div className="md:w-1/2">
           <img
             src={product.imgURL}
             alt={product.name}
-            className="w-full h-full object-cover transition-transform duration-300" // Smooth transition for image
+            className="w-full h-full object-cover transition-transform duration-300"
           />
         </div>
         {/* Product Details */}
-        <div className="w-1/2 p-6 flex flex-col justify-between">
+        <div className="md:w-1/2 p-6 flex flex-col justify-between">
           <div>
             <h2 className="text-3xl font-bold">{product.name}</h2>
             <p className="text-xl font-semibold text-coral-red">
-              Ksh {totalPrice} {/* Display total price */}
+              Ksh {totalPrice}
             </p>
             <p className="mt-2">{product.description}</p>
 
@@ -92,10 +119,16 @@ const ProductDetail = () => {
                 +
               </button>
             </div>
-            <button className="bg-coral-red mb-6 text-white px-4 py-2 rounded hover:bg-red-600">
+            <button
+              onClick={handleAddToCart}
+              className="bg-coral-red mb-6 text-white px-4 py-2 rounded hover:bg-red-600"
+            >
               Add to Cart
             </button>
-            <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-500">
+            <button
+              onClick={handleOrderViaWhatsApp}
+              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-500"
+            >
               Order via WhatsApp
             </button>
           </div>
@@ -129,10 +162,10 @@ const ProductDetail = () => {
       </div>
 
       {/* Related Products Section */}
-      <RelatedProducts 
-        currentProductId={productId} 
-        selectedRelatedProduct={selectedRelatedProduct} 
-        setSelectedRelatedProduct={setSelectedRelatedProduct} 
+      <RelatedProducts
+        currentProductId={productId}
+        selectedRelatedProduct={selectedRelatedProduct}
+        setSelectedRelatedProduct={setSelectedRelatedProduct}
       />
     </div>
   );

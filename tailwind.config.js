@@ -33,7 +33,16 @@ export default {
         card: "url('assets/images/thumbnail-background.svg')",
       },
       screens: {
-        wide: "1440px",
+        xxs: "320px", // Extra Extra Small screens (small mobile)
+        xs: "480px", // Extra Small screens
+        sm: "640px", // Small screens (sm)
+        md: "768px", // Medium screens (md)
+        lg: "1024px", // Large screens (lg)
+        xl: "1280px", // Extra Large screens (xl)
+        "2xl": "1536px", // Double Extra Large screens (2xl)
+        "3xl": "1920px", // Triple Extra Large screens (large desktops)
+        "4k": "2560px", // 4K resolution screens
+        wide: "1440px", // Specific breakpoint for wide screens
       },
     },
   },

@@ -20,40 +20,71 @@
   .input {
     @apply sm:flex-1 max-sm:w-full text-base leading-normal text-slate-gray pl-5 max-sm:p-5 outline-none sm:border-none border max-sm:border-slate-gray max-sm:rounded-full;
   }
-}
 
-@layer utilities {
-  .padding-all {
-    @apply sm:px-16 px-8 sm:py-24 py-12;
+  /* Navbar styles */
+  .nav {
+    @apply fixed top-0 left-0 w-full z-20 bg-white shadow-md transition-all duration-300 ease-in-out;
   }
 
-  .padding-x {
-    @apply sm:px-16 px-8;
+  .nav-logo {
+    @apply w-40 h-auto md:w-32;
   }
 
-  .padding-y {
-    @apply sm:py-24 py-12;
+  .nav-links {
+    @apply hidden md:flex flex-1 justify-center items-center gap-10;
   }
 
-  .padding-l {
-    @apply sm:pl-16 pl-8;
+  .nav-item {
+    @apply font-montserrat text-lg text-slate-700 hover:text-coral-red transition duration-200;
   }
 
-  .padding-r {
-    @apply sm:pr-16 pr-8;
+  /* Mobile styles */
+  .mobile-search {
+    @apply flex md:hidden mx-4;
   }
 
-  .padding-t {
-    @apply sm:pt-24 pt-12;
+  .mobile-menu {
+    @apply fixed top-16 right-0 w-64 bg-white shadow-lg transition-transform duration-300 ease-in-out;
   }
 
-  .padding-b {
-    @apply sm:pb-24 pb-12;
+  /* Custom styles based on screen size */
+  @media (max-width: 500px) {
+    .nav {
+      @apply p-2;
+    }
+    .nav-logo {
+      @apply w-32;
+    }
+    .nav-links {
+      @apply gap-5;
+    }
   }
 
-  .info-text {
-    @apply font-montserrat text-slate-gray text-lg leading-7;
+  @media (min-width: 501px) and (max-width: 550px) {
+    .nav {
+      @apply p-3;
+    }
+    .nav-links {
+      @apply gap-6;
+    }
   }
+
+  @media (min-width: 551px) and (max-width: 600px) {
+    .nav {
+      @apply p-4;
+    }
+    .nav-links {
+      @apply gap-7;
+    }
+  }
+
+  @media (min-width: 601px) and (max-width: 650px) {
+    .nav {
+      @apply p-5;
+    }
+  }
+
+  /* Continue adding styles for every 50px increment as needed */
 }
 
 /* Keyframes for the slide-in animation */
@@ -108,4 +139,12 @@
     padding: 15px; /* Adjust padding for smaller screens */
     min-height: 100px; /* Adjust minimum height for smaller screens */
   }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

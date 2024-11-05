@@ -2,7 +2,7 @@ import { products } from "../constants";
 import { PopularProductCard } from "../components";
 import { useState } from "react";
 
-const ITEMS_PER_PAGE = 12; // Number of items per "page" (3 rows)
+const ITEMS_PER_PAGE = 4; // Number of items per "page" (3 rows)
 
 const PopularProducts = () => {
   const [searchQuery, setSearchQuery] = useState("");

@@ -7,9 +7,12 @@ import {
   ContactUs,
 } from "./sections";
 import Nav from "./components/Nav";
-import { Routes, Route } from "react-router-dom"; // Import Routes and Route here
-import ProductDetail from "./components/ProductDetail"; // Ensure you have a ProductDetail component
-import Cart from "./components/Cart"; // Import the Cart component
+import { Routes, Route } from "react-router-dom";
+import ProductDetail from "./components/ProductDetail";
+import Cart from "./components/Cart";
+import SearchResultsPage from "./pages/SearchResultsPage";
+import Checkout from "./components/Checkout";
+import OrderComplete from "./components/OrderComplete";
 
 const App = () => (
   <main className="relative">
@@ -34,6 +37,12 @@ const App = () => (
       <Route path="/product/:id" element={<ProductDetail />} />
       {/* Shopping Cart Route */}
       <Route path="/cart" element={<Cart />} /> {/* Add this line */}
+      {/* Search result Route */}
+      <Route path="/search-results" element={<SearchResultsPage />} />
+      {/* Checkout page Route */}
+      <Route path="/checkout" element={<Checkout />} />
+      {/* Order Complete page Route */}
+      <Route path="/order-complete" element={<OrderComplete />} />
     </Routes>
 
     {/* Footer is outside the Routes but will always render */}

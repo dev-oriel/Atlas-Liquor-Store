@@ -50,7 +50,7 @@ function Footer() {
                 className="flex items-center mb-3 hover:text-coral-400 transition duration-300"
               >
                 <img
-                  src={product.image}
+                  src={product.imgURL}
                   alt={product.name}
                   className="w-16 h-16 object-cover rounded mr-3" // Adjust size as needed
                 />
@@ -73,7 +73,7 @@ function Footer() {
                 className="flex items-center mb-3 hover:text-coral-400 transition duration-300"
               >
                 <img
-                  src={product.image}
+                  src={product.imgURL}
                   alt={product.name}
                   className="w-16 h-16 object-cover rounded mr-3" // Adjust size as needed
                 />

@@ -7,27 +7,23 @@ import removeIcon from "../assets/icons/delete.png";
 const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity, addToCart } = useCart();
   const location = useLocation();
-  const scrollRef = useRef(null); // Ref for scrolling
-  const [loadingProductId, setLoadingProductId] = useState(null); // State for tracking loading product
-  const [coupon, setCoupon] = useState(""); // State for coupon input
-  const [discount, setDiscount] = useState(0); // State for discount
+  const scrollRef = useRef(null);
+  const [loadingProductId, setLoadingProductId] = useState(null);
+  const [coupon, setCoupon] = useState("");
+  const [discount, setDiscount] = useState(0);
 
-  // Scroll to top whenever the location (URL path) changes
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [location]);
 
-  // Calculate subtotal
-  const subtotal = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
+  const subtotal =
+    cartItems?.reduce((total, item) => total + item.price * item.quantity, 0) ||
+    0;
 
-  const shippingFee = 200; // Example shipping fee
-  const total = subtotal + shippingFee - discount; // Apply discount
+  const shippingFee = 200;
+  const total = subtotal + shippingFee - discount;
 
   const handleApplyCoupon = () => {
-    // Example: Fixed discount of Ksh 100 for any coupon
     if (coupon) {
       setDiscount(100);
       setCoupon("");
@@ -51,41 +47,38 @@ const Cart = () => {
   };
 
   const handleAddToCart = (product) => {
-    addToCart(product); // Add product to cart
-    window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to the top
+    addToCart(product);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <div className="p-4 max-w-6xl mx-auto pt-40">
       {/* Progress Bar */}
       <div className="mb-4 flex flex-wrap justify-between">
-        <Link
-          to="/cart"
+        <div
           className="flex-grow md:flex-1 h-8 bg-coral-red rounded-l-lg relative"
           style={{ minWidth: "120px" }}
         >
           <span className="absolute inset-0 flex items-center justify-center text-white font-semibold">
             Shopping Cart
           </span>
-        </Link>
-        <Link
-          to="/checkout"
-          className="flex-grow md:flex-1 h-8 bg-coral-red relative"
+        </div>
+        <div
+          className="flex-grow md:flex-1 h-8 bg-gray-200 relative"
           style={{ minWidth: "120px" }}
         >
           <span className="absolute inset-0 flex items-center justify-center text-white font-semibold">
             Checkout
           </span>
-        </Link>
-        <Link
-          to="/order-complete"
-          className="flex-grow md:flex-1 h-8 bg-coral-red rounded-r-lg relative"
+        </div>
+        <div
+          className="flex-grow md:flex-1 h-8 bg-gray-200 rounded-r-lg relative"
           style={{ minWidth: "120px" }}
         >
           <span className="absolute inset-0 flex items-center justify-center text-white font-semibold">
             Order Complete
           </span>
-        </Link>
+        </div>
       </div>
       <h2 className="text-3xl font-bold text-gray-800 mb-6">Shopping Cart</h2>
       <div className="flex flex-col md:flex-row">
@@ -201,8 +194,7 @@ const Cart = () => {
           </Link>
         </div>
       </div>
-      <div className="mt-8 h-16"></div>{" "}
-      {/* Spacer for footer differentiation */}
+
       {/* Recommended Products Section */}
       <h2 className="text-2xl font-bold text-gray-800 mb-6 mt-8">
         Recommended Products
@@ -214,27 +206,27 @@ const Cart = () => {
         >
           &lt;
         </button>
-        <div className="flex overflow-x-auto no-scrollbar" ref={scrollRef}>
+        <div className="flex overflow-x-auto space-x-4 pb-4" ref={scrollRef}>
           {recommendedProducts.map((product) => (
             <div
               key={product.id}
-              className="bg-white rounded-lg shadow-md p-4 m-2 flex-none w-60"
+              className="flex-none w-48 bg-white shadow-md rounded-lg overflow-hidden"
             >
               <img
                 src={product.imgURL}
                 alt={product.name}
-                className="h-40 rounded-md object-cover mb-4"
+                className="w-full h-32 object-cover"
               />
-              <h3 className="text-lg font-semibold text-gray-800 mb-1">
-                {product.name}
-              </h3>
-              <p className="text-gray-600">Ksh {product.price.toFixed(2)}</p>
-              <button
-                onClick={() => handleAddToCart(product)}
-                className="mt-2 w-full bg-coral-red text-white py-2 rounded-lg hover:bg-red-600 transition-colors"
-              >
-                Add to Cart
-              </button>
+              <div className="p-4">
+                <h3 className="text-lg font-semibold">{product.name}</h3>
+                <p className="text-gray-600 mt-2">Ksh {product.price}</p>
+                <button
+                  onClick={() => handleAddToCart(product)}
+                  className="mt-2 w-full bg-coral-red text-white py-2 rounded-lg hover:bg-red-600 transition-colors"
+                >
+                  Add to Cart
+                </button>
+              </div>
             </div>
           ))}
         </div>

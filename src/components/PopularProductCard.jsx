@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../CartContext";
-import CartNotification from "./CartNotification"; // Import the new component
+import CartNotification from "./CartNotification"; 
 
 const PopularProductCard = ({ id, imgURL, name, price }) => {
   const { addToCart } = useCart();

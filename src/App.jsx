@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Hero,
   CustomerReviews,
@@ -13,14 +14,13 @@ import Cart from "./components/Cart";
 import SearchResultsPage from "./pages/SearchResultsPage";
 import Checkout from "./components/Checkout";
 import OrderComplete from "./components/OrderComplete";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 const App = () => (
   <main className="relative">
     <Nav />
-
     {/* Define Routes for different pages */}
     <Routes>
-      {/* Home Route */}
       <Route
         path="/"
         element={
@@ -33,19 +33,17 @@ const App = () => (
           </>
         }
       />
-      {/* Product Detail Route */}
       <Route path="/product/:id" element={<ProductDetail />} />
-      {/* Shopping Cart Route */}
-      <Route path="/cart" element={<Cart />} /> {/* Add this line */}
-      {/* Search result Route */}
+      <Route path="/cart" element={<Cart />} />
       <Route path="/search-results" element={<SearchResultsPage />} />
-      {/* Checkout page Route */}
       <Route path="/checkout" element={<Checkout />} />
-      {/* Order Complete page Route */}
       <Route path="/order-complete" element={<OrderComplete />} />
     </Routes>
 
-    {/* Footer is outside the Routes but will always render */}
+    {/* Scroll to Top Button */}
+    <ScrollToTopButton />
+
+    {/* Footer */}
     <section className="bg-black padding-x padding-t pb-8 text-white">
       <Footer />
     </section>

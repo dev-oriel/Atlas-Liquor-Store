@@ -38,28 +38,34 @@ const CartNotification = ({ show, onClose }) => {
           <h2 className="text-xl font-bold mb-4 text-gray-800">
             Item Added to Cart
           </h2>
-          <div className="flex-grow overflow-y-auto space-y-4">
-            {cartItems.map((item) => (
-              <div
-                key={item.id}
-                className="flex items-center bg-gray-100 p-3 rounded-lg shadow-sm"
-              >
-                <img
-                  src={item.imgURL}
-                  alt={item.name}
-                  className="w-16 h-16 rounded-md mr-4 object-cover"
-                />
-                <div className="text-gray-700">
-                  <h3 className="text-md font-semibold">{item.name}</h3>
-                  <p className="text-coral-red font-semibold">
-                    Ksh {item.price}
-                  </p>
-                  <p className="text-gray-600 text-sm">
-                    Quantity: {item.quantity}
-                  </p>
+          <div className="flex-grow overflow-y-auto space-y-4 max-h-[70vh]">
+            {cartItems.length === 0 ? (
+              <p className="text-center text-xl text-slate-gray">
+                Your cart is empty.
+              </p>
+            ) : (
+              cartItems.map((item) => (
+                <div
+                  key={item.id}
+                  className="flex items-center bg-gray-100 p-3 rounded-lg shadow-sm"
+                >
+                  <img
+                    src={item.imgURL}
+                    alt={item.name}
+                    className="w-16 h-16 rounded-md mr-4 object-cover"
+                  />
+                  <div className="text-gray-700">
+                    <h3 className="text-md font-semibold">{item.name}</h3>
+                    <p className="text-coral-red font-semibold">
+                      Ksh {item.price}
+                    </p>
+                    <p className="text-gray-600 text-sm">
+                      Quantity: {item.quantity}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
 
           {/* Subtotal Display */}

@@ -44,6 +44,15 @@ export default {
         "4k": "2560px", // 4K resolution screens
         wide: "1440px", // Specific breakpoint for wide screens
       },
+      animation: {
+        pop: "pop 0.5s ease-out forwards",
+      },
+      keyframes: {
+        pop: {
+          "0%": { opacity: 0, transform: "scale(0.8)" },
+          "100%": { opacity: 1, transform: "scale(1)" },
+        },
+      },
     },
   },
   plugins: [],

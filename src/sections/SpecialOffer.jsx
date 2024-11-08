@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { products } from "../constants"; // Assuming you have your products data here
-import { PopularProductCard } from "../components";
+import PopularProductCard from "../components/PopularProductCard";
+
+const ITEMS_PER_PAGE = 12; // Number of items per "page" (3 rows)
 
 const SpecialOffer = () => {
   const [searchQuery, setSearchQuery] = useState("");

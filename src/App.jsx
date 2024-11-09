@@ -15,6 +15,7 @@ import SearchResultsPage from "./pages/SearchResultsPage";
 import Checkout from "./components/Checkout";
 import OrderComplete from "./components/OrderComplete";
 import ScrollToTopButton from "./components/ScrollToTopButton";
+import ProductListing from "./components/ProductListing";
 
 const App = () => (
   <main className="relative">
@@ -38,6 +39,7 @@ const App = () => (
       <Route path="/search-results" element={<SearchResultsPage />} />
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/order-complete" element={<OrderComplete />} />
+      <Route path="/products" element={<ProductListing />} />
     </Routes>
 
     {/* Scroll to Top Button */}

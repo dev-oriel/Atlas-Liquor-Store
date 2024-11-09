@@ -88,7 +88,7 @@ const SpecialOffer = () => {
     <section
       id="special-offers"
       ref={sectionRef}
-      className="max-w-full mx-auto pb-10 px-4"
+      className="max-w-full mx-auto pb-10 px-4 mb-20"
     >
       <div className="flex flex-col items-center justify-center gap-4">
         <h2 className="text-3xl sm:text-4xl font-bold text-center">

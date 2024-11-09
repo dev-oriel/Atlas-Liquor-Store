@@ -24,7 +24,7 @@ import {
 export const navLinks = [
   { href: "/", label: "Home" },
   { href: "#about-us", label: "About Us" },
-  { href: "#products", label: "Products" },
+  { href: "/products", label: "Products" },
   { href: "#contact-us", label: "Contact Us" },
 ];
 
@@ -306,5 +306,67 @@ export const recommendedProducts = [
     name: "Soft Drinks",
     price: 100,
     imgURL: blackLabel,
+  },
+];
+export const categories = [
+  {
+    label: "Premium Collections",
+    subcategories: [],
+  },
+  {
+    label: "Spirits",
+    subcategories: [
+      "Whiskey",
+      "Vodka",
+      "Rum",
+      "Gin",
+      "Tequila",
+      "Mezcal",
+      "Cognac & Brandy",
+      "Liqueurs",
+    ],
+  },
+  {
+    label: "Wines",
+    subcategories: [
+      "Red Wine",
+      "White Wine",
+      "Rose Wine",
+      "Champagne & Sparkling Wine",
+    ],
+  },
+  {
+    label: "Beers, Infusions & Sake",
+    subcategories: ["Beers", "Ciders", "Infusions", "Sake"],
+  },
+  {
+    label: "Cocktails",
+    subcategories: [],
+  },
+  {
+    label: "Glassware",
+    subcategories: [
+      "Glassware",
+      "Bar Accessories",
+      "Cork Screws & Bottle Openers",
+    ],
+  },
+  {
+    label: "Non-Alcoholic Drinks",
+    subcategories: [
+      "Non-Alcoholic Wines",
+      "Non-Alcoholic Beers",
+      "Non-Alcoholic Spirits",
+      "Soft Drinks & Mixers",
+      "Mixers",
+    ],
+  },
+  {
+    label: "Smokes & Accessories",
+    subcategories: ["Smoke Accessories", "Vapes"],
+  },
+  {
+    label: "Others",
+    subcategories: [],
   },
 ];

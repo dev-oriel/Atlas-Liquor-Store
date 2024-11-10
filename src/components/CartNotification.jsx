@@ -1,9 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useCart } from "../CartContext";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const CartNotification = ({ show, onClose }) => {
   const { cartItems } = useCart();
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   // Calculate the subtotal
   const subtotal = cartItems.reduce(
@@ -16,6 +19,14 @@ const CartNotification = ({ show, onClose }) => {
     if (e.target.id === "overlay") {
       onClose();
     }
+  };
+
+  const handleToCart = () => {
+    setIsLoading(true);
+    // Delay navigation by a short amount of time to show loading
+    setTimeout(() => {
+      navigate("/cart");
+    }, 1000);
   };
 
   return (
@@ -75,14 +86,17 @@ const CartNotification = ({ show, onClose }) => {
               <span className="text-coral-red">Ksh {subtotal.toFixed(2)}</span>
             </p>
           </div>
-
-          <Link
-            to="/cart"
+          <button
+            onClick={handleToCart}
             className="mt-4 bg-coral-red text-white py-2 px-4 rounded-lg text-center font-medium hover:bg-red-600 transition-colors duration-300"
-            onClick={onClose}
           >
             Proceed to Cart
-          </Link>
+          </button>
+          {isLoading && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20">
+              <div className="loader w-12 h-12 border-4 border-t-4 border-white rounded-full animate-spin"></div>
+            </div>
+          )}
           <button
             onClick={onClose}
             className="mt-2 text-gray-500 text-sm hover:text-gray-700"

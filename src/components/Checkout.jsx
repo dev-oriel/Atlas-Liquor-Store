@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useCart } from "../CartContext";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import OrderComplete from "./OrderComplete";
 
 const Checkout = () => {
   const { cartItems, addToCart, removeFromCart, updateQuantity } = useCart();
@@ -112,7 +111,8 @@ const Checkout = () => {
   }
   const handlePlaceOrder = () => {
     if (!validateForm()) {
-      return; // Prevent order placement if the form is invalid
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
     }
     alert("Order placed successfully!");
     navigate("/order-complete");

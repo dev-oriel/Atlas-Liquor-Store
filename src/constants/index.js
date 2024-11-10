@@ -266,19 +266,19 @@ export const recommendedProducts = [
     imgURL: JD,
   },
   {
-    id: 2,
+    id: 9,
     name: "Cheese Platter",
     price: 500,
     imgURL: redLabel,
   },
   {
-    id: 3,
+    id: 10,
     name: "Cocktail Shaker Set",
     price: 1200,
     imgURL: jameson,
   },
   {
-    id: 4,
+    id: 11,
     name: "Wine Glass Set",
     price: 800,
     imgURL: blackLabel,

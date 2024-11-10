@@ -11,6 +11,7 @@ const Cart = () => {
   const [loadingProductId, setLoadingProductId] = useState(null);
   const [coupon, setCoupon] = useState("");
   const [discount, setDiscount] = useState(0);
+  const whatsappLink = `https://wa.me/+254758997669?text=I'm interested in purchasing the ${name}.`;
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -202,37 +203,50 @@ const Cart = () => {
       <div className="relative">
         <button
           onClick={scrollLeft}
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-coral-red text-white rounded-full p-2 hover:bg-red-600 transition-colors z-10"
+          className="absolute -left-3 top-1/2 transform -translate-y-1/2 bg-opacity-50 bg-coral-red text-white p-2 hover:bg-red-600 transition-colors z-10"
         >
           &lt;
         </button>
-        <div className="flex overflow-x-auto space-x-4 pb-4" ref={scrollRef}>
+        <div
+          className="flex overflow-x-auto space-x-4 pb-4 m-4 "
+          ref={scrollRef}
+        >
           {recommendedProducts.map((product) => (
             <div
               key={product.id}
-              className="flex-none w-48 bg-white shadow-md rounded-lg overflow-hidden"
+              className="flex flex-col justify-center items-center align-middle min-w-60  bg-white shadow-md rounded-lg overflow-hidden "
             >
               <img
                 src={product.imgURL}
                 alt={product.name}
-                className="w-full h-32 object-cover"
+                className="md:w-52 xxs:w-44  object-cover"
               />
-              <div className="p-4">
-                <h3 className="text-lg font-semibold">{product.name}</h3>
-                <p className="text-gray-600 mt-2">Ksh {product.price}</p>
+              <div className="p-2 w-full flex flex-col">
+                <h3 className="text-lg px-2 font-semibold items-start w-full">
+                  {product.name}
+                </h3>
+                <p className="text-gray-800 px-2 mt-2">Ksh {product.price}</p>
                 <button
                   onClick={() => handleAddToCart(product)}
-                  className="mt-2 w-full bg-coral-red text-white py-2 rounded-lg hover:bg-red-600 transition-colors"
+                  className="w-full items-center px-4 py-2 my-1 bg-coral-red text-white font-semibold xxs:rounded-sm rounded-md hover:bg-red-500 transition duration-300 text-sm xxs:text-base sm:text-base"
                 >
                   Add to Cart
                 </button>
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full items-center px-2 py-2 lg:py-2 bg-green-500 text-white font-semibold xxs:rounded-sm rounded-md hover:bg-green-600 transition duration-300 text-center text-sm xxs:text-base sm:text-base"
+                >
+                  Order via WhatsApp
+                </a>
               </div>
             </div>
           ))}
         </div>
         <button
           onClick={scrollRight}
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-coral-red text-white rounded-full p-2 hover:bg-red-600 transition-colors z-10"
+          className="absolute -right-3 top-1/2 transform -translate-y-1/2 bg-coral-red text-white bg-opacity-50 p-2 hover:bg-red-600 transition-colors z-10"
         >
           &gt;
         </button>

@@ -6,6 +6,7 @@ import CartNotification from "./CartNotification";
 const PopularProductCard = ({ id, imgURL, name, price }) => {
   const { addToCart } = useCart();
   const [showNotification, setShowNotification] = useState(false);
+  const whatsappLink = `https://wa.me/+254758997669?text=I'm interested in purchasing the ${name}.`;
 
   const handleAddToCart = () => {
     addToCart({ id, imgURL, name, price, quantity: 1 });
@@ -15,8 +16,6 @@ const PopularProductCard = ({ id, imgURL, name, price }) => {
   const closeNotification = () => {
     setShowNotification(false);
   };
-
-  const whatsappLink = `https://wa.me/+254758997669?text=I'm interested in purchasing the ${name}.`;
 
   return (
     <div className="flex flex-col w-[300px] max-xxs:w-full max-sm:w-full bg-white rounded-lg shadow-md overflow-hidden p-4 h-full">

@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const OrderComplete = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   // Example tracking number (could be passed as a prop or fetched from context)
   const trackingNumber = "123456789";
 
   const handleReturnHome = () => {
-    navigate("/");
+    setIsLoading(true);
+    // Delay navigation by a short amount of time to show loading
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
   };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location]);
 
   return (
     <div className="flex mt-20 sm:mt-40 flex-col items-center justify-center min-h-screen bg-gray-100 px-4 sm:px-0">
@@ -29,6 +38,11 @@ const OrderComplete = () => {
       >
         Return to Home
       </button>
+      {isLoading && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20">
+          <div className="loader w-12 h-12 border-4 border-t-4 border-white rounded-full animate-spin"></div>
+        </div>
+      )}
     </div>
   );
 };

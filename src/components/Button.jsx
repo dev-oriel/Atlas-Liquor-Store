@@ -12,7 +12,7 @@ const Button = ({ label, iconURL }) => {
       navigate("/products");
     }, 1000); // 1 second delay for loading effect
   };
-
+  
   return (
     <>
       <button

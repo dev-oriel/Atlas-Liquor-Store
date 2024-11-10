@@ -6,7 +6,9 @@ const ITEMS_PER_PAGE_LARGE = 8;
 
 const SpecialOffer = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [filteredProducts, setFilteredProducts] = useState(
+    products.filter((product) => product.specialOffer) // Start by only showing special offers
+  );
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(ITEMS_PER_PAGE_LARGE);
   const [isVisible, setIsVisible] = useState(true);
@@ -18,13 +20,18 @@ const SpecialOffer = () => {
     setSearchQuery(query);
 
     if (query) {
-      const matchedProducts = products.filter((product) =>
-        product.name.toLowerCase().includes(query.toLowerCase())
+      const matchedProducts = products.filter(
+        (product) =>
+          product.specialOffer &&
+          product.name.toLowerCase().includes(query.toLowerCase())
       );
       setFilteredProducts(matchedProducts);
       setCurrentPage(0);
     } else {
-      setFilteredProducts(products);
+      const specialOfferProducts = products.filter(
+        (product) => product.specialOffer
+      );
+      setFilteredProducts(specialOfferProducts);
       setCurrentPage(0);
     }
   };

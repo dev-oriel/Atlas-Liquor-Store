@@ -49,6 +49,8 @@ export const products = [
     category: "Spirits",
     subcategory: "Whiskey",
     filter: "new",
+    popular: true,
+    specialOffer: false,
   },
   {
     id: 2,
@@ -58,6 +60,8 @@ export const products = [
     category: "Wines",
     subcategory: "Red Wine",
     filter: "best sellers",
+    popular: true,
+    specialOffer: true,
   },
   {
     id: 3,
@@ -67,6 +71,8 @@ export const products = [
     category: "Beers, Infusions & Sake",
     subcategory: "Beers",
     filter: "popular",
+    popular: false,
+    specialOffer: true,
   },
   {
     id: 4,
@@ -76,6 +82,7 @@ export const products = [
     category: "Cocktails",
     subcategory: null,
     filter: "new",
+    specialOffer: false,
   },
   {
     id: 5,
@@ -85,6 +92,8 @@ export const products = [
     category: "Glassware",
     subcategory: "Glassware",
     filter: "best sellers",
+    specialOffer: false,
+    popular: true,
   },
   {
     id: 6,
@@ -94,6 +103,8 @@ export const products = [
     category: "Non-Alcoholic Drinks",
     subcategory: "Mixers",
     filter: "popular",
+    specialOffer: false,
+    popular: false,
   },
   {
     id: 7,
@@ -103,6 +114,8 @@ export const products = [
     category: "Spirits",
     subcategory: "Vodka",
     filter: "new",
+    specialOffer: true,
+    popular: false,
   },
   {
     id: 8,
@@ -112,6 +125,8 @@ export const products = [
     category: "Wines",
     subcategory: "White Wine",
     filter: "best sellers",
+    specialOffer: false,
+    popular: true,
   },
   {
     id: 9,
@@ -121,6 +136,8 @@ export const products = [
     category: "Beers, Infusions & Sake",
     subcategory: "Ciders",
     filter: "popular",
+    specialOffer: true,
+    popular: false,
   },
   {
     id: 10,
@@ -130,6 +147,8 @@ export const products = [
     category: "Cocktails",
     subcategory: null,
     filter: "new",
+    specialOffer: false,
+    popular: true,
   },
   {
     id: 11,
@@ -139,6 +158,8 @@ export const products = [
     category: "Spirits",
     subcategory: "Cognac & Brandy",
     filter: "best sellers",
+    specialOffer: false,
+    popular: false,
   },
   {
     id: 12,
@@ -146,8 +167,10 @@ export const products = [
     name: "London Dry Gin",
     price: 3100,
     category: "Spirits",
+    popular: true,
     subcategory: "Gin",
     filter: "popular",
+    specialOffer: true,
   },
   {
     id: 13,
@@ -157,6 +180,8 @@ export const products = [
     category: "Wines",
     subcategory: "Champagne & Sparkling Wine",
     filter: "new",
+    specialOffer: false,
+    popular: false,
   },
   {
     id: 14,
@@ -165,7 +190,9 @@ export const products = [
     price: 4700,
     category: "Glassware",
     subcategory: "Bar Accessories",
+    specialOffer: false,
     filter: "best sellers",
+    popular: false,
   },
   {
     id: 15,
@@ -175,6 +202,8 @@ export const products = [
     category: "Beers, Infusions & Sake",
     subcategory: "Ciders",
     filter: "popular",
+    specialOffer: true,
+    popular: true,
   },
   {
     id: 16,
@@ -184,6 +213,8 @@ export const products = [
     category: "Spirits",
     subcategory: "Tequila",
     filter: "new",
+    specialOffer: false,
+    popular: true,
   },
   {
     id: 17,
@@ -193,6 +224,8 @@ export const products = [
     category: "Spirits",
     subcategory: "Rum",
     filter: "best sellers",
+    specialOffer: false,
+    popular: false,
   },
   {
     id: 18,
@@ -202,6 +235,8 @@ export const products = [
     category: "Wines",
     subcategory: "Rose Wine",
     filter: "popular",
+    specialOffer: true,
+    popular: true,
   },
   {
     id: 19,
@@ -211,6 +246,8 @@ export const products = [
     category: "Beers, Infusions & Sake",
     subcategory: "Sake",
     filter: "new",
+    specialOffer: false,
+    popular: false,
   },
   {
     id: 20,
@@ -220,6 +257,8 @@ export const products = [
     category: "Spirits",
     subcategory: "Cognac & Brandy",
     filter: "best sellers",
+    specialOffer: false,
+    popular: false,
   },
   {
     id: 21,
@@ -229,6 +268,8 @@ export const products = [
     category: "Non-Alcoholic Drinks",
     subcategory: "Mixers",
     filter: "popular",
+    specialOffer: true,
+    popular: true,
   },
   {
     id: 22,
@@ -238,6 +279,8 @@ export const products = [
     category: "Wines",
     subcategory: "Champagne & Sparkling Wine",
     filter: "new",
+    specialOffer: false,
+    popular: true,
   },
   {
     id: 23,
@@ -247,6 +290,8 @@ export const products = [
     category: "Beers, Infusions & Sake",
     subcategory: "Beers",
     filter: "best sellers",
+    specialOffer: true,
+    popular: false,
   },
   {
     id: 24,
@@ -256,6 +301,7 @@ export const products = [
     category: "Cocktails",
     subcategory: null,
     filter: "popular",
+    specialOffer: false,
   },
   {
     id: 25,
@@ -265,6 +311,8 @@ export const products = [
     category: "Glassware",
     subcategory: "Glassware",
     filter: "new",
+    popular: true,
+    specialOffer: true,
   },
   {
     id: 26,
@@ -274,6 +322,8 @@ export const products = [
     category: "Non-Alcoholic Drinks",
     subcategory: "Non-Alcoholic Spirits",
     filter: "best sellers",
+    specialOffer: false,
+    popular: false,
   },
   {
     id: 27,
@@ -283,6 +333,8 @@ export const products = [
     category: "Spirits",
     subcategory: "Whiskey",
     filter: "popular",
+    specialOffer: true,
+    popular: true,
   },
   {
     id: 28,
@@ -292,6 +344,8 @@ export const products = [
     category: "Wines",
     subcategory: "Red Wine",
     filter: "new",
+    specialOffer: false,
+    popular: false,
   },
   {
     id: 29,
@@ -300,7 +354,9 @@ export const products = [
     price: 4890,
     category: "Beers, Infusions & Sake",
     subcategory: "Beers",
+    specialOffer: true,
     filter: "best sellers",
+    popular: true,
   },
   {
     id: 30,
@@ -309,7 +365,9 @@ export const products = [
     price: 2100,
     category: "Spirits",
     subcategory: "Liqueurs",
+    specialOffer: false,
     filter: "popular",
+    popular: false,
   },
   {
     id: 31,
@@ -319,6 +377,8 @@ export const products = [
     category: "Wines",
     subcategory: "Red Wine",
     filter: "new",
+    specialOffer: false,
+    popular: false,
   },
   {
     id: 32,
@@ -326,8 +386,10 @@ export const products = [
     name: "Tequila Sunrise",
     price: 3770,
     category: "Cocktails",
+    popular: true,
     subcategory: null,
     filter: "best sellers",
+    specialOffer: true,
   },
   {
     id: 33,
@@ -337,6 +399,8 @@ export const products = [
     category: "Wines",
     subcategory: "White Wine",
     filter: "popular",
+    specialOffer: false,
+    popular: false,
   },
   {
     id: 34,
@@ -346,6 +410,8 @@ export const products = [
     category: "Spirits",
     subcategory: "Liqueurs",
     filter: "new",
+    specialOffer: true,
+    popular: true,
   },
   {
     id: 35,
@@ -354,7 +420,9 @@ export const products = [
     price: 3150,
     category: "Beers, Infusions & Sake",
     subcategory: "Beers",
+    specialOffer: true,
     filter: "best sellers",
+    popular: false,
   },
   {
     id: 36,
@@ -364,6 +432,8 @@ export const products = [
     category: "Non-Alcoholic Drinks",
     subcategory: "Mixers",
     filter: "popular",
+    popular: true,
+    specialOffer: false,
   },
   {
     id: 37,
@@ -373,6 +443,8 @@ export const products = [
     category: "Spirits",
     subcategory: "Whiskey",
     filter: "new",
+    specialOffer: false,
+    popular: true,
   },
   {
     id: 38,
@@ -381,7 +453,9 @@ export const products = [
     price: 2750,
     category: "Glassware",
     subcategory: "Glassware",
+    specialOffer: true,
     filter: "best sellers",
+    popular: false,
   },
   {
     id: 39,
@@ -391,6 +465,8 @@ export const products = [
     category: "Cocktails",
     subcategory: null,
     filter: "popular",
+    specialOffer: false,
+    popular: true,
   },
   {
     id: 40,
@@ -400,6 +476,8 @@ export const products = [
     category: "Beers, Infusions & Sake",
     subcategory: "Beers",
     filter: "new",
+    specialOffer: false,
+    popular: false,
   },
   {
     id: 41,
@@ -409,6 +487,8 @@ export const products = [
     category: "Spirits",
     subcategory: "Gin",
     filter: "best sellers",
+    specialOffer: true,
+    popular: false,
   },
   {
     id: 42,
@@ -418,6 +498,8 @@ export const products = [
     category: "Wines",
     subcategory: "Red Wine",
     filter: "popular",
+    popular: true,
+    specialOffer: false,
   },
   {
     id: 43,
@@ -426,7 +508,9 @@ export const products = [
     price: 2990,
     category: "Cocktails",
     subcategory: null,
+    specialOffer: true,
     filter: "new",
+    popular: false,
   },
   {
     id: 44,
@@ -436,6 +520,8 @@ export const products = [
     category: "premium collections",
     subcategory: "Whiskey",
     filter: "best sellers",
+    specialOffer: false,
+    popular: true,
   },
   {
     id: 45,
@@ -444,7 +530,9 @@ export const products = [
     price: 2450,
     category: "Cocktails",
     subcategory: null,
+    specialOffer: true,
     filter: "popular",
+    popular: false,
   },
   {
     id: 46,
@@ -454,6 +542,8 @@ export const products = [
     category: "Non-Alcoholic Drinks",
     subcategory: "Non-Alcoholic Spirits",
     filter: "new",
+    specialOffer: false,
+    popular: true,
   },
   {
     id: 47,
@@ -463,6 +553,8 @@ export const products = [
     category: "Wines",
     subcategory: "Red Wine",
     filter: "best sellers",
+    specialOffer: false,
+    popular: false,
   },
   {
     id: 48,
@@ -472,6 +564,8 @@ export const products = [
     category: "Beers, Infusions & Sake",
     subcategory: "Beers",
     filter: "popular",
+    specialOffer: false,
+    popular: false,
   },
   {
     id: 49,
@@ -479,8 +573,10 @@ export const products = [
     name: "Tahitian Rum",
     price: 4120,
     category: "Spirits",
+    specialOffer: true,
     subcategory: "Rum",
     filter: "new",
+    popular: true,
   },
   {
     id: 50,
@@ -490,6 +586,8 @@ export const products = [
     category: "Spirits",
     subcategory: "Liqueurs",
     filter: "best sellers",
+    specialOffer: false,
+    popular: true,
   },
 ];
 

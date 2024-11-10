@@ -6,7 +6,9 @@ const ITEMS_PER_PAGE_LARGE = 8;
 
 const PopularProducts = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [filteredProducts, setFilteredProducts] = useState(
+    products.filter((product) => product.popular === true)
+  );
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(ITEMS_PER_PAGE_LARGE);
   const [isVisible, setIsVisible] = useState(true);
@@ -18,13 +20,15 @@ const PopularProducts = () => {
     setSearchQuery(query);
 
     if (query) {
-      const matchedProducts = products.filter((product) =>
-        product.name.toLowerCase().includes(query.toLowerCase())
+      const matchedProducts = products.filter(
+        (product) =>
+          product.name.toLowerCase().includes(query.toLowerCase()) &&
+          product.popular === true
       );
       setFilteredProducts(matchedProducts);
       setCurrentPage(0);
     } else {
-      setFilteredProducts(products);
+      setFilteredProducts(products.filter((product) => product.popular === true));
       setCurrentPage(0);
     }
   };
@@ -95,8 +99,7 @@ const PopularProducts = () => {
           Our <span className="text-coral-red">Popular</span> Products
         </h2>
         <p className="lg:max-w-lg mt-1 text-slate-gray text-center px-2 sm:px-0">
-          Browse our top-notch quality and the best beers, wines, and
-          accessories
+          Browse our top-notch quality and the best beers, wines, and accessories
         </p>
       </div>
 

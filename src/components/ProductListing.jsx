@@ -12,22 +12,9 @@ const ProductListing = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [categoryFilter, setCategoryFilter] = useState("ALL");
   const [expandedCategory, setExpandedCategory] = useState(null);
+  const [expandedSubcategory, setExpandedSubcategory] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const sidebarRef = useRef(null);
-
-  const handleCategorySelect = (category) => setCategoryFilter(category);
-
-  const toggleCategory = (index) => {
-    setExpandedCategory(expandedCategory === index ? null : index);
-  };
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
-  const closeSidebar = () => {
-    setIsSidebarOpen(false);
-  };
 
   // Determine the number of items per page based on screen size
   const ITEMS_PER_PAGE =
@@ -39,18 +26,56 @@ const ProductListing = () => {
   );
   const maxPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
 
+  // Apply the category filter based on selected category or subcategory
   const applyCategoryFilter = (category) => {
     let filtered = [];
     if (category === "BEST SELLERS") {
-      filtered = products.filter((product) => product.isBestSeller);
+      filtered = products.filter(
+        (product) => product.filter === "best sellers"
+      );
     } else if (category === "NEW") {
-      filtered = products.filter((product) => product.isNew);
+      filtered = products.filter((product) => product.filter === "new");
+    } else if (category === "ALL") {
+      filtered = products; // Show all products for "ALL"
     } else {
-      filtered = products;
+      // Filter by category or subcategory
+      filtered = products.filter(
+        (product) =>
+          product.category === category || product.subcategory === category
+      );
     }
+
     setFilteredProducts(filtered);
     setCategoryFilter(category);
-    setCurrentPage(0);
+    setCurrentPage(0); // Reset to first page when category changes
+  };
+
+  const handleCategorySelect = (category) => {
+    setCategoryFilter(category);
+    applyCategoryFilter(category);
+    if (window.innerWidth < 1024) {
+      // Collapse the sidebar on smaller devices when a category is selected
+      setIsSidebarOpen(false);
+    }
+  };
+
+  const toggleCategory = (index) => {
+    setExpandedCategory(expandedCategory === index ? null : index);
+    setExpandedSubcategory(null); // Reset subcategory when a category is toggled
+  };
+
+  const toggleSubcategory = (subcategory) => {
+    setExpandedSubcategory(
+      expandedSubcategory === subcategory ? null : subcategory
+    );
+  };
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const closeSidebar = () => {
+    setIsSidebarOpen(false);
   };
 
   // Close sidebar when clicking outside
@@ -69,7 +94,7 @@ const ProductListing = () => {
   }, []);
 
   useEffect(() => {
-    applyCategoryFilter("ALL");
+    applyCategoryFilter("ALL"); // Default to "ALL" category when the component mounts
   }, []);
 
   return (
@@ -77,7 +102,7 @@ const ProductListing = () => {
       {/* Overlay */}
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 bg-black opacity-50 z-30"
+          className="fixed inset-0 bg-black opacity-50 z-20"
           onClick={closeSidebar}
         ></div>
       )}
@@ -85,7 +110,7 @@ const ProductListing = () => {
       {/* Sidebar */}
       <aside
         ref={sidebarRef}
-        className={`w-3/5 sm:w-1/5 bg-gray-50 rounded-sm p-4 mt-28 transition-all duration-300 ease-in-out fixed top-0 left-0 sm:static sm:translate-x-0 ${
+        className={`w-3/5 sm:w-1/5 bg-gray-50 xxs:z-20 md:z-10 rounded-sm p-4 mt-28 transition-all duration-300 ease-in-out fixed top-0 left-0 sm:static sm:translate-x-0 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
         style={{ minHeight: "60vh" }}
@@ -117,7 +142,10 @@ const ProductListing = () => {
                     {category.subcategories.map((subcategory) => (
                       <button
                         key={subcategory}
-                        onClick={() => handleCategorySelect(subcategory)}
+                        onClick={() => {
+                          toggleSubcategory(subcategory);
+                          handleCategorySelect(subcategory);
+                        }}
                         className="block text-md text-gray-700 hover:text-coral-red"
                       >
                         {subcategory}
@@ -175,8 +203,11 @@ const ProductListing = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mb-8">
           {currentProducts.length > 0 ? (
             currentProducts.map((product) => (
-              <div className="w-[280px] sm:max-w-sm md:max-w-md mx-auto mb-3 ">
-                <PopularProductCard key={product.id} {...product} />
+              <div
+                className="w-[280px] sm:max-w-sm md:max-w-md mx-auto mb-3"
+                key={product.id}
+              >
+                <PopularProductCard {...product} />
               </div>
             ))
           ) : (
@@ -195,7 +226,7 @@ const ProductListing = () => {
               className={`px-4 py-2 rounded ${
                 index === currentPage
                   ? "bg-coral-red text-white"
-                  : "bg-gray-200 text-gray-700"
+                  : "bg-gray-100 text-gray-600"
               }`}
             >
               {index + 1}

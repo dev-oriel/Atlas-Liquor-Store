@@ -5,7 +5,7 @@ import { categories } from "../constants";
 
 const ITEMS_PER_PAGE_SMALL = 10;
 const ITEMS_PER_PAGE_LARGE = 16;
-const productCategories = ["BEST SELLERS", "NEW", "ALL"];
+const productCategories = ["ALL", "BEST SELLERS", "NEW"];
 
 const ProductListing = () => {
   const [filteredProducts, setFilteredProducts] = useState(products);
@@ -85,7 +85,7 @@ const ProductListing = () => {
       {/* Sidebar */}
       <aside
         ref={sidebarRef}
-        className={`w-3/5 sm:w-1/5 bg-gray-50 rounded-sm p-4 mt-28 transition-all duration-300 ease-in-out fixed top-0 left-0 z-40 sm:static sm:translate-x-0 ${
+        className={`w-3/5 sm:w-1/5 bg-gray-50 rounded-sm p-4 mt-28 transition-all duration-300 ease-in-out fixed top-0 left-0 sm:static sm:translate-x-0 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
         style={{ minHeight: "60vh" }}

@@ -30,7 +30,7 @@ const CartNotification = ({ show, onClose }) => {
       )}
 
       <div
-        className={`fixed top-0 right-0 h-full max-w-[400px] sm:max-w-[350px] md:w-[320px] lg:w-[300px] bg-white shadow-xl rounded-l-lg transform ${
+        className={`fixed xxs:top-10 xxs:-right-5 md:top-2 xxs:h-3/4 md:h-full max-w-[400px] sm:max-w-[350px] md:w-[320px] lg:w-[300px] bg-white shadow-xl rounded-l-lg transform ${
           show ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out z-50 overflow-hidden`}
       >
